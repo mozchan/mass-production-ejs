@@ -1,0 +1,21 @@
+{
+  "name": "mass-production",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gulp-ejs": "^3.1.3",
+    "gulp-rename": "^1.4.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}

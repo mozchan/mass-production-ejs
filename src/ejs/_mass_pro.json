@@ -1,0 +1,14 @@
+{
+  "page1": {
+    "title": "PAGE 1",
+    "discription": "PAGE 1の説明文が入ります。"
+  },
+  "page2": {
+    "title": "PAGE 2",
+    "discription": "PAGE 2の説明文が入ります。"
+  },
+  "page3": {
+    "title": "PAGE 3",
+    "discription": "PAGE 3の説明文が入ります。"
+  }
+}
