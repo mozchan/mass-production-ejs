@@ -1,4 +1,4 @@
-# 準備 #
+# :bulb:準備 #
 * 予めタスクランナー「Gulp」を実行できる環境を構築する
 * 予め量産用HTMLファイルのテンプレートとなるEJSファイルを作成する
 * HTMLファイルに記述するテキストデータをまとめたJSONファイルを作成する
@@ -26,6 +26,16 @@ const templateFile = 'src/ejs/_template.ejs';
 ```
 const massProJson = JSON.parse(fs.readFileSync('src/ejs/_mass_pro.json', 'utf-8'));
 ```
+<参考>  
+複数のJSONファイルで管理している場合
+```
+const json1 = JSON.parse(fs.readFileSync('src/ejs/_file_01.json', 'utf-8'));
+const json2 = JSON.parse(fs.readFileSync('src/ejs/_file_02.json', 'utf-8'));
+
+// マージ
+const massProJson = Object.assign(json1,json2);
+```
+
 ### page ###
 JSONデータの第一階層目を配列に代入。ページ数を取得するために使用。
 ```
