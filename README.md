@@ -42,8 +42,8 @@ let onError = (err) => {
 };
 ```
 ### zeroPadding ###
-引数 `num` が2桁未満の場合、1桁目に `0` を代入する。
-例）`num` が `1` であった場合 `01` と返す。
+引数`num`が2桁未満の場合、1桁目に`0`を代入する。  
+例）`num`が`1`であった場合`01`と返す。
 ```
 let zeroPadding = (num) => {
   const digit = 2; // ゼロパディングを含めた桁数を設定
@@ -58,7 +58,8 @@ let zeroPadding = (num) => {
 ```
 
 ## HTMLファイルの生成 ##
-変数 `page` に代入されてる配列分、HTMLを生成する。HTMLファイルの生成は一度のみ。（監視`watch`は行わない）
+変数`page`に代入されてる配列分、HTMLを生成する。  
+HTMLファイルの生成は一度のみ。（監視`watch`は行わない）
 ```
 for (let i = 0; i < page.length; i++) {
   let id = i + 1;
@@ -73,8 +74,8 @@ for (let i = 0; i < page.length; i++) {
 }
 ```
 
-### インクリメントの制御 ###
-indexの開始番号を 0 → 1 に変更し、変数`id`に代入。関数`zeroPadding`の引数に変数`id`を代入することにより、ゼロパディング付きのインクリメント変数`adjustID`を作成する。
+### インクリメントの制御 ###
+index番号の開始を`1`からに変更し、ゼロパディングを追加する。
 ```
 let id = i + 1;
 let ajustID = zeroPadding(id);
@@ -102,7 +103,7 @@ HTML生成後
 ```
 
 ### HTMLファイル名の指定 ###
-HTMLファイル名を `page_xx.html` となるように指定。
+HTMLファイル名を`page_xx.html`となるように指定。
 ```
 .pipe(rename('page_' + adjustID + '.html'))
 ```
