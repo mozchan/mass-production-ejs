@@ -73,13 +73,13 @@ HTMLファイルの生成は一度のみ。（監視`watch`は行わない）
 ```
 for (let i = 0; i < page.length; i++) {
   let id = i + 1;
-  let ajustID = zeroPadding(id);
+  let adjustID = zeroPadding(id);
 
   gulp.src(templateFile)
   .pipe(ejs({
     data: massProJson[page[i]]
   }).on('error', onError))
-  .pipe(rename('page_' + ajustID + '.html')) // htmlファイルの名前を変更
+  .pipe(rename('page_' + adjustID + '.html')) // htmlファイルの名前を変更
   .pipe(gulp.dest('dist/')); // 指定したフォルダに出力
 }
 ```
@@ -88,7 +88,7 @@ for (let i = 0; i < page.length; i++) {
 index番号の開始を`1`からに変更し、ゼロパディングを追加する。
 ```
 let id = i + 1;
-let ajustID = zeroPadding(id);
+let adjustID = zeroPadding(id);
 ```
 
 ### EJSファイルにJSONデータを渡す ###
