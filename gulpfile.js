@@ -29,7 +29,6 @@ gulp.task('mass-pro', () => {
   for (let i = 0; i < page.length; i++) {
     let id = i + 1;
     let adjustID = zeroPadding(id);
-    console.log(massProJson[page[i]]);
 
     gulp.src(templateFile)
     .pipe(ejs({
