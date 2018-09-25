@@ -37,16 +37,16 @@ const massProJson = Object.assign(json1,json2);
 ```
 
 ### page ###
-JSONデータの第一階層目を配列に代入。ページ数を取得するために使用。
+JSONで取得したデータを Object → Array に変更。
 ```
-let page = Object.keys(massProJson);
+const page = Object.keys(massProJson);
 ```
 
 ## 関数 ##
 ### onError ###
 エラーが発生した場合の処理。意図しないHTMLファイルが生成されることを防ぐ。
 ```
-let onError = (err) => {
+const onError = (err) => {
   console.log(err.message); 
   this.emit('end');
 };
@@ -55,9 +55,9 @@ let onError = (err) => {
 引数`num`が2桁未満の場合、1桁目に`0`を代入する。  
 例）`num`が`1`であった場合`01`と返す。
 ```
-let zeroPadding = (num) => {
+const zeroPadding = (num) => {
   const digit = 2; // ゼロパディングを含めた桁数を設定
-  let length = String(num).length; 
+  const length = String(num).length; 
 
   if(digit > length) {
     return (new Array(digit).join(0) + num);
@@ -71,30 +71,30 @@ let zeroPadding = (num) => {
 変数`page`に代入されてる配列分、HTMLを生成する。  
 HTMLファイルの生成は一度のみ。（監視`watch`は行わない）
 ```
-for (let i = 0; i < page.length; i++) {
-  let id = i + 1;
-  let adjustID = zeroPadding(id);
-
+page.forEach((page, i) => {
+  const id = ++i;
+  const adjustID = zeroPadding(id);
+  
   gulp.src(templateFile)
-  .pipe(ejs({
-    data: massProJson[page[i]]
-  }).on('error', onError))
-  .pipe(rename('page_' + adjustID + '.html')) // htmlファイルの名前を変更
-  .pipe(gulp.dest('dist/')); // 指定したフォルダに出力
-}
+    .pipe(ejs({
+      data: massProJson[page]
+    }).on('error', onError))
+    .pipe(rename(`page_${adjustID}.html`)) // htmlファイルの名前を変更
+    .pipe(gulp.dest('dist/')); // 指定したフォルダに出力
+})
 ```
 
 ### インクリメントの制御 ###
 index番号の開始を`1`からに変更し、ゼロパディングを追加する。
 ```
-let id = i + 1;
-let adjustID = zeroPadding(id);
+const id = ++i;
+const adjustID = zeroPadding(id);
 ```
 
 ### EJSファイルにJSONデータを渡す ###
 ```
 .pipe(ejs({
-  data: massProJson[page[i]]
+  data: massProJson[page]
 })
 ```
 `data`に渡しているデータ
@@ -115,5 +115,5 @@ HTML生成後
 ### HTMLファイル名の指定 ###
 HTMLファイル名を`page_xx.html`となるように指定。
 ```
-.pipe(rename('page_' + adjustID + '.html'))
+.pipe(rename(`page_${adjustID}.html`))
 ```
