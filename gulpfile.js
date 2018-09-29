@@ -12,24 +12,12 @@ gulp.task('mass-pro', () => {
     console.log(err.message);
     this.emit('end');
   };
-  
-  // ゼロパディングに変換
-  const zeroPadding = (num) => {
-    const digit = 2; // ゼロパディングを含めた桁数を設定
-    const length = String(num).length; 
-    
-    if(digit > length) {
-      return (new Array(digit).join(0) + num);
-    } else {
-      return num;
-    }
-  }
 
   // ページの数だけループ
   page.forEach((page, i) => {
     const id = ++i;
-    const adjustID = zeroPadding(id);
-    
+    const adjustID = String(id).padStart(2,0);
+
     gulp.src(templateFile)
       .pipe(ejs({
         data: massProJson[page]

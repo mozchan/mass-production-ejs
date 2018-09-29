@@ -51,21 +51,6 @@ const onError = (err) => {
   this.emit('end');
 };
 ```
-### zeroPadding ###
-引数`num`が2桁未満の場合、1桁目に`0`を代入する。  
-例）`num`が`1`であった場合`01`と返す。
-```
-const zeroPadding = (num) => {
-  const digit = 2; // ゼロパディングを含めた桁数を設定
-  const length = String(num).length; 
-
-  if(digit > length) {
-    return (new Array(digit).join(0) + num);
-  } else {
-    return num;
-  }
-}
-```
 
 ## HTMLファイルの生成 ##
 変数`page`に代入されてる配列分、HTMLを生成する。  
@@ -73,8 +58,8 @@ HTMLファイルの生成は一度のみ。（監視`watch`は行わない）
 ```
 page.forEach((page, i) => {
   const id = ++i;
-  const adjustID = zeroPadding(id);
-  
+  const adjustID = String(id).padStart(2,0);
+
   gulp.src(templateFile)
     .pipe(ejs({
       data: massProJson[page]
@@ -85,10 +70,10 @@ page.forEach((page, i) => {
 ```
 
 ### インクリメントの制御 ###
-index番号の開始を`1`からに変更し、ゼロパディングを追加する。
+index番号の開始を`1`からに変更し、padStart()メソッドを使ってゼロパディングを追加する。
 ```
 const id = ++i;
-const adjustID = zeroPadding(id);
+const adjustID = String(id).padStart(2,0);
 ```
 
 ### EJSファイルにJSONデータを渡す ###
