@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const gulp = require("gulp");
+const gulp = require('gulp');
 const ejs = require('gulp-ejs');
 const rename = require('gulp-rename');
 

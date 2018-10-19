@@ -8,7 +8,7 @@
 * [gulp-ejs](https://www.npmjs.com/package/gulp-ejs)
 * [gulp-rename](https://www.npmjs.com/package/gulp-rename)
 ```
-const gulp = require("gulp");
+const gulp = require('gulp');
 const ejs = require('gulp-ejs');
 const rename = require('gulp-rename');
 ```
@@ -47,7 +47,7 @@ const page = Object.keys(massProJson);
 エラーが発生した場合の処理。意図しないHTMLファイルが生成されることを防ぐ。
 ```
 const onError = (err) => {
-  console.log(err.message); 
+  console.log(err.message);
   this.emit('end');
 };
 ```
